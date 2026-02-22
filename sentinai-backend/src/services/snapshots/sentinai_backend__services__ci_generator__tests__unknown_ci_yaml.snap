@@ -1,0 +1,11 @@
+---
+source: src/services/ci_generator.rs
+expression: yaml
+---
+# Fallback Pipeline
+name: Generic
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo 'Unknown project'

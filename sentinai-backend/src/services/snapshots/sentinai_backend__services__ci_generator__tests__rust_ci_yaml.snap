@@ -1,0 +1,28 @@
+---
+source: src/services/ci_generator.rs
+expression: yaml
+---
+name: Sentinai Rust CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Ensure strict Rust warnings
+      run: cargo check --all-targets --all-features
+      env:
+        RUSTFLAGS: "-D warnings"
+    - name: Run tests
+      run: cargo test
+    - name: Security audit
+      run: cargo audit
