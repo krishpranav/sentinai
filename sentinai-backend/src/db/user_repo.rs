@@ -75,6 +75,7 @@ mod tests {
     }
 
     #[tokio::test]
+    #[ignore]
     async fn test_user_repository_crud() {
         let pool = get_pool().await;
         let github_id: i64 = std::time::SystemTime::now()

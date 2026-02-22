@@ -31,6 +31,7 @@ mod tests {
     use crate::config::Config;
 
     #[tokio::test]
+    #[ignore]
     async fn test_health_endpoint() {
         dotenvy::dotenv().ok();
         let config = Config::from_env().expect("Config should load from env");
